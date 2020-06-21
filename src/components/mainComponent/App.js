@@ -51,7 +51,7 @@ export class App extends Component {
         ...item,
         index
       }
-    })
+    }).sort(this.camparePln)
     this.setState({
       list: data
     })
@@ -59,8 +59,8 @@ export class App extends Component {
   }
 
   camparePln = (a, b) => {
-    const plnA = a.pln;
-    const plnB = b.pln;
+    const plnA = parseFloat(a.pln);
+    const plnB = parseFloat(b.pln);
 
     let comparison = 0;
     if (plnA < plnB) {
@@ -96,14 +96,13 @@ export class App extends Component {
         ...item,
         pln: valueToDecimal
       }
-    })
+    }).sort(this.camparePln)
     this.setState({list: dataList})
   }
 
 
   render() {
     const {isModalVisible, list, valuePLN} = this.state;
-    const dataList = list.sort(this.camparePln)
     return (
       <Styled.Container>
         <Styled.Title>Transakcja Walutowa</Styled.Title>
@@ -126,7 +125,7 @@ export class App extends Component {
           <Styled.Table
             columns={Columns(this.deleteTransaction)}
             rowKey={record => record.name}
-            dataSource={dataList}
+            dataSource={list}
             size="middle"
           />
           < AddCurrencyTransactionModal
