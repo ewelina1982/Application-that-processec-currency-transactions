@@ -78,7 +78,7 @@ export class App extends Component {
 
     return (
       <Styled.GreatesValue>
-        <h2>Transakcja o najwiekszej kwocie</h2>
+        <h2>Transakcja o największej kwocie</h2>
         <h3>Nazwa : {list[0] ? list[0].name : null}</h3>
         <h3>Pln : {list[0] ? list[0].pln : null}</h3>
         <h3>Euro : {list[0] ? list[0].euro : null}</h3>

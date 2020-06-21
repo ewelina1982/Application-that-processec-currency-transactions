@@ -5,7 +5,7 @@ import * as Styled from './style';
 const showTransferValute = (deleteFunction) => {
     return [
         {
-            title: 'Name',
+            title: 'Nazwa',
             dataIndex: 'name',
             key: 'name',
         },
