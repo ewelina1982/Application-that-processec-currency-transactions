@@ -73,16 +73,15 @@ export class App extends Component {
 
   renderGreatesValue = () => {
     const {list} = this.state
-    const data = list.sort(this.camparePln)
     const sumPln = list.map(item => parseFloat(item.pln)).reduce((prev, next) => prev + next, 0).toFixed(2)
     const sumEuro = list.map(item => parseFloat(item.euro)).reduce((prev, next) => prev + next, 0).toFixed(2)
 
     return (
       <Styled.GreatesValue>
         <h2>Transakcja o najwiekszej kwocie</h2>
-        <h3>Nazwa : {data[0] ? data[0].name : null}</h3>
-        <h3>Pln : {data[0] ? data[0].pln : null}</h3>
-        <h3>Euro : {data[0] ? data[0].euro : null}</h3>
+        <h3>Nazwa : {list[0] ? list[0].name : null}</h3>
+        <h3>Pln : {list[0] ? list[0].pln : null}</h3>
+        <h3>Euro : {list[0] ? list[0].euro : null}</h3>
         <h3>Suma PLN : {sumPln}</h3>
         <h3>Suma Euro : {sumEuro}</h3>
       </Styled.GreatesValue>
