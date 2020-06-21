@@ -52,8 +52,8 @@ const AddCurrencyTransactionModal = (props) => {
     const {name, euro} = form.getFieldsValue();
     const valueToDecimal = parseFloat(euro * props.valuePLN).toFixed(2)
     const payload = {
-      name: name,
-      euro: euro,
+      name,
+      euro,
       pln: valueToDecimal
     }
     props.onSave(payload)
