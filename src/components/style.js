@@ -55,9 +55,9 @@ export const ContainerTable = styled.div`
 display: flex;
 `;
 
-export const Button = styled(ButtonAntd).attrs(props => ({
+export const Button = styled(ButtonAntd).attrs({
   'data-testid': 'add-button'
-}))`
+})`
  margin-left: 130px;
 `;
 

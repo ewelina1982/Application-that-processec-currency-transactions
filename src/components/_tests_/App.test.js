@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '../_mock_/matchMedia.mock.js';
-import App from '../mainComponent/App';
+import App from '../../App';
 
 describe('Test method search', () =>{
   it('check exist search input', ()=> {

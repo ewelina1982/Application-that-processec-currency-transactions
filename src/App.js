@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.css';
-import * as Styled from '../style.js';
-import Columns from '../columns.js';
-import AddCurrencyTransactionModal from '../addCurrencyTransactionModal/AddCurrencyTransactionModal';
+import * as Styled from './components/style.js';
+import Columns from './components/columns.js';
+import AddCurrencyTransactionModal from './components/addCurrencyTransactionModal/AddCurrencyTransactionModal';
 
 
 export class App extends Component {
@@ -12,7 +12,7 @@ export class App extends Component {
     isModalVisible: false
   }
 
-  changeValueInput = (e) => {
+  changeInputValue = (e) => {
     const {value} = e.target;
     const reg = /^[0-9]*(\.[0-9]{0,2})?$/
     if ((!isNaN(value) && reg.test(value)) || value === '') {
@@ -51,14 +51,14 @@ export class App extends Component {
         ...item,
         index
       }
-    }).sort(this.camparePln)
+    }).sort(this.comparePln)
     this.setState({
       list: data
     })
     this.closeModal()
   }
 
-  camparePln = (a, b) => {
+  comparePln = (a, b) => {
     const plnA = parseFloat(a.pln);
     const plnB = parseFloat(b.pln);
 
@@ -71,7 +71,7 @@ export class App extends Component {
     return comparison ;
   }
 
-  renderGreatesValue = () => {
+  showGreatestValueAndSumPlnAndEuro = () => {
     const {list} = this.state
     const sumPln = list.map(item => parseFloat(item.pln)).reduce((prev, next) => prev + next, 0).toFixed(2)
     const sumEuro = list.map(item => parseFloat(item.euro)).reduce((prev, next) => prev + next, 0).toFixed(2)
@@ -95,7 +95,7 @@ export class App extends Component {
         ...item,
         pln: valueToDecimal
       }
-    }).sort(this.camparePln)
+    }).sort(this.comparePln)
     this.setState({list: dataList})
   }
 
@@ -108,7 +108,7 @@ export class App extends Component {
         <Styled.Input
           addonBefore="1 Euro =" addonAfter="PLN"
           size='small'
-          onChange={this.changeValueInput}
+          onChange={this.changeInputValue}
           placeholder='Wpisz liczbę'
           data-testid="search-input"
           allowClear
@@ -133,7 +133,7 @@ export class App extends Component {
             onSave={this.saveModal}
             valuePLN={valuePLN}
           />
-          {this.renderGreatesValue()}
+          {this.showGreatestValueAndSumPlnAndEuro()}
         </Styled.ContainerTable>
       </Styled.Container>
     );
